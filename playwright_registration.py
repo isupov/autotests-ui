@@ -29,5 +29,5 @@ with sync_playwright() as playwright:
     expect(dashboard_title).to_be_visible()
     expect(dashboard_title).to_have_text("Dashboard")
 
-    # Задержка для наглядности выполнения теста (не рекомендуется использовать в реальных автотестах)
+    # Задержка для наглядности выполнения теста (не рекомендуется использовать в реальных тестах)
     page.wait_for_timeout(5000)
