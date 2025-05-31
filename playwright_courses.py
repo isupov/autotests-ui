@@ -40,14 +40,24 @@ with sync_playwright() as playwright:
     # Переходим на страницу входа
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
 
-    # Проверяем  наличие и текст заголовков "Courses", "There is no results"
+    # Проверяем  наличие и текст заголовка "Courses"
     courses_title = page.get_by_test_id('courses-list-toolbar-title-text')
     expect(courses_title).to_be_visible()
     expect(courses_title).to_have_text("Courses")
 
-    courses_title = page.get_by_test_id('courses-list-empty-view-title-text')
-    expect(courses_title).to_be_visible()
-    expect(courses_title).to_have_text("There is no results")
+    # Проверяем  наличие иконки пустой папки
+    empty_view_icon = page.get_by_test_id('courses-list-empty-view-icon')
+    expect(empty_view_icon).to_be_visible()
+
+    # Проверяем  наличие и текст заголовка  "There is no results"
+    empty_list_title = page.get_by_test_id('courses-list-empty-view-title-text')
+    expect(empty_list_title).to_be_visible()
+    expect(empty_list_title).to_have_text("There is no results")
+
+    # Проверяем  наличие и текст заголовка  "Results from the load test pipeline will be displayed here"
+    empty_view_description = page.get_by_test_id('courses-list-empty-view-description-text')
+    expect(empty_view_description).to_be_visible()
+    expect(empty_view_description).to_have_text('Results from the load test pipeline will be displayed here')
 
     # Задержка для наглядности выполнения теста (не рекомендуется использовать в реальных тестах)
     page.wait_for_timeout(5000)
