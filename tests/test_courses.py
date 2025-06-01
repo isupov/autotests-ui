@@ -1,5 +1,8 @@
+import pytest # Импортируем pytest
 from playwright.sync_api import sync_playwright, expect
 
+@pytest.mark.regression # Добавили маркировку regression
+@pytest.mark.courses # Добавили маркировку courses
 def test_empty_courses_list():
 
     with sync_playwright() as playwright:
@@ -31,7 +34,7 @@ def test_empty_courses_list():
         context.storage_state(path="browser-state.json")
 
         # Задержка для наглядности выполнения теста (не рекомендуется использовать в реальных тестах)
-        page.wait_for_timeout(5000)
+        page.wait_for_timeout(1000)
 
     with sync_playwright() as playwright:
         # Открываем браузер и создаем новую страницу
