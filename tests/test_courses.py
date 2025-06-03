@@ -4,29 +4,26 @@ from playwright.sync_api import expect, Page
 @pytest.mark.regression # Добавили маркировку regression
 @pytest.mark.courses # Добавили маркировку courses
 def test_empty_courses_list(chromium_page_with_state: Page):
+    # Переходим на страницу входа
+    chromium_page_with_state.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
 
-        # Переходим на страницу входа
-        chromium_page_with_state.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
+    # Проверяем  наличие и текст заголовка "Courses"
+    courses_title = chromium_page_with_state.get_by_test_id('courses-list-toolbar-title-text')
+    expect(courses_title).to_be_visible()
+    expect(courses_title).to_have_text("Courses")
 
-        # Проверяем  наличие и текст заголовка "Courses"
-        courses_title = chromium_page_with_state.get_by_test_id('courses-list-toolbar-title-text')
-        expect(courses_title).to_be_visible()
-        expect(courses_title).to_have_text("Courses")
+    # Проверяем  наличие иконки пустой папки
+    empty_view_icon = chromium_page_with_state.get_by_test_id('courses-list-empty-view-icon')
+    expect(empty_view_icon).to_be_visible()
 
-        # Проверяем  наличие иконки пустой папки
-        empty_view_icon = chromium_page_with_state.get_by_test_id('courses-list-empty-view-icon')
-        expect(empty_view_icon).to_be_visible()
+    # Проверяем  наличие и текст заголовка  "There is no results"
+    empty_list_title = chromium_page_with_state.get_by_test_id('courses-list-empty-view-title-text')
+    expect(empty_list_title).to_be_visible()
+    expect(empty_list_title).to_have_text("There is no results")
 
-        # Проверяем  наличие и текст заголовка  "There is no results"
-        empty_list_title = chromium_page_with_state.get_by_test_id('courses-list-empty-view-title-text')
-        expect(empty_list_title).to_be_visible()
-        expect(empty_list_title).to_have_text("There is no results")
+    # Проверяем  наличие и текст заголовка  "Results from the load test pipeline will be displayed here"
+    empty_view_description = chromium_page_with_state.get_by_test_id('courses-list-empty-view-description-text')
+    expect(empty_view_description).to_be_visible()
+    expect(empty_view_description).to_have_text('Results from the load test pipeline will be displayed here')
 
-        # Проверяем  наличие и текст заголовка  "Results from the load test pipeline will be displayed here"
-        empty_view_description = chromium_page_with_state.get_by_test_id('courses-list-empty-view-description-text')
-        expect(empty_view_description).to_be_visible()
-        expect(empty_view_description).to_have_text('Results from the load test pipeline will be displayed here')
-
-        # Задержка для наглядности выполнения теста (не рекомендуется использовать в реальных тестах)
-        chromium_page_with_state.wait_for_timeout(1000)
 
