@@ -31,7 +31,7 @@ def test_empty_courses_list(chromium_page_with_state: Page):
 
 @pytest.mark.regression # Добавили маркировку regression
 @pytest.mark.courses # Добавили маркировку courses
-def test_create_course(courses_list_page: CoursesListPage,create_course_page: CreateCoursePage):
+def test_create_course(courses_list_page: CoursesListPage, create_course_page: CreateCoursePage):
     create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
     create_course_page.check_visible_create_course_title()
     create_course_page.check_disabled_create_course_button()
