@@ -1,5 +1,4 @@
 import pytest
-from playwright.sync_api import expect, Page
 
 from pages.courses_list_page import CoursesListPage
 from pages.create_course_page import CreateCoursePage
@@ -20,8 +19,8 @@ def test_empty_courses_list(courses_list_page: CoursesListPage):
     # Проверяем  наличие и текст заголовка  "There is no results"
     courses_list_page.check_visible_empty_view()
 
-@pytest.mark.regression # Добавили маркировку regression
-@pytest.mark.courses # Добавили маркировку courses
+@pytest.mark.regression
+@pytest.mark.courses
 def test_create_course(courses_list_page: CoursesListPage, create_course_page: CreateCoursePage):
     create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
     create_course_page.check_visible_create_course_title()
