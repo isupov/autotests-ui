@@ -7,9 +7,10 @@ class BaseElement:
         self.name = name
         self.locator = locator
 
-    def get_locator(self, **kwargs) -> Locator:
+    def get_locator(self, nth: int = 0, **kwargs) -> Locator:
+        # Добавляем аргумент nth со значением по умолчанию 0
         locator = self.locator.format(**kwargs)
-        return self.page.get_by_test_id(locator)
+        return self.page.get_by_test_id(locator).nth(nth)  # Теперь выбираем элемент по индексу
 
     def click(self, **kwargs):
         locator = self.get_locator(**kwargs)
