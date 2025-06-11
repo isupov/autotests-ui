@@ -22,16 +22,6 @@ class CreateCoursePage(BasePage):
         self.exercises_empty_view = EmptyViewComponent(page, 'create-course-exercises')
         self.create_exercise_form = CreateCourseExerciseFormComponent(page)
 
-
-
-
-
-
-    def check_visible_create_course_button(self):
-        expect(self.check_visible_create_course_button).to_be_visible()
-
-
-
     def check_visible_exercises_empty_view(self):
         self.exercises_empty_view.check_visible(
             title='There is no exercises',
