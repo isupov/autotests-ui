@@ -41,7 +41,7 @@ class CreateCourseFormComponent(BaseComponent):
         self.create_course_estimated_time_input.check_have_value(estimated_time)
 
         self.create_course_description_textarea.check_visible()
-        self.create_course_description_textarea.check_value(description)
+        self.create_course_description_textarea.check_have_value(description)
 
         self.create_course_max_score_input.check_visible()
         self.create_course_max_score_input.check_have_value(max_score)
