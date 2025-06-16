@@ -13,7 +13,7 @@ def initialize_playwright_page(
     browser = playwright.chromium.launch(headless=settings.headless)
     # Используем settings.videos_dir
     context = browser.new_context(
-        base_url=settings.base_url(),
+        base_url=settings.get_base_url(),  # Необходимо добавить settings.get_base_url()
         storage_state=storage_state,
         record_video_dir=settings.videos_dir
     )

@@ -3,6 +3,7 @@ from playwright.sync_api import Page, expect
 
 from components.base_component import BaseComponent
 from elements.text import Text
+from config import settings
 
 class NavbarComponent(BaseComponent):
     def __init__(self, page: Page):
@@ -17,4 +18,4 @@ class NavbarComponent(BaseComponent):
         self.app_title.check_have_text('UI Course')
 
         self.welcome_title.check_visible()
-        self.welcome_title.check_have_text(f'Welcome, {username}!')
+        self.welcome_title.check_have_text(f'Welcome, {settings.test_user.username}!')
