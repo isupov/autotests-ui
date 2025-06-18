@@ -1,5 +1,3 @@
-import sys, platform
-
 from enum import Enum
 from typing import Self
 
@@ -43,8 +41,6 @@ class Settings(BaseSettings):
     tracing_dir: DirectoryPath
     allure_results_dir: DirectoryPath  # Добавили новое поле
     browser_state_file: FilePath
-    os_info: str
-    python_version: str
 
 
     def get_base_url(self) -> str:
@@ -56,8 +52,7 @@ class Settings(BaseSettings):
         tracing_dir = DirectoryPath("./tracing")
         allure_results_dir = DirectoryPath("./allure-results")  # Создаем объект пути к папке
         browser_state_file = FilePath("browser-state.json")
-        os_info = f"{platform.system()}, {platform.release()}"
-        python_version = sys.version
+
 
         videos_dir.mkdir(exist_ok=True)
         tracing_dir.mkdir(exist_ok=True)
@@ -68,9 +63,7 @@ class Settings(BaseSettings):
             videos_dir=videos_dir,
             tracing_dir=tracing_dir,
             allure_results_dir=allure_results_dir,  # Передаем allure_results_dir в инициализацию настроек
-            browser_state_file=browser_state_file,
-            os_info=os_info,
-            python_version=python_version,
+            browser_state_file=browser_state_file
         )
 
 
